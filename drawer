@@ -1,0 +1,11 @@
+ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+    val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+    // toolbar height를 상태바 높이만큼 늘리고 padding 적용
+    val params = binding.toolbar.layoutParams
+    params.height = systemBars.top + resources.getDimensionPixelSize(
+        androidx.appcompat.R.dimen.abc_action_bar_default_height_material
+    )
+    binding.toolbar.layoutParams = params
+    binding.toolbar.setPadding(0, systemBars.top, 0, 0)
+    WindowInsetsCompat.CONSUMED
+}
